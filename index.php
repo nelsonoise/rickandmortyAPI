@@ -25,9 +25,9 @@ $prevPage = $currentPage > 1 ? $currentPage - 1 : null;
 </head>
 
 <body>
-
-    <h1>Rick and Morty API</h1>
-
+    <a href="index.php" class="logo-link">
+        <h1>Rick and Morty API</h1>
+    </a>
     <div class="container">
         <?php if (isset($data['results'])): ?>
             <?php foreach ($data['results'] as $char): ?>

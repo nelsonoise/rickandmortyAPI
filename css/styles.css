@@ -131,6 +131,26 @@ h1 {
     font-size: 1.1rem;
     color: var(--text-white);
 }
+/* Estilos para el enlace del logo */
+.logo-link {
+    text-decoration: none; /* Quita el subrayado */
+    display: block;
+    transition: opacity 0.2s ease;
+}
+
+.logo-link:hover {
+    opacity: 0.8; /* Efecto visual al pasar el mouse */
+}
+
+.logo-link h1 {
+    margin-bottom: 20px; /* Ajustamos el margen */
+    cursor: pointer;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
 /* Responsivo para móviles */
 @media (max-width: 500px) {
