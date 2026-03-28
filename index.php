@@ -1,8 +1,17 @@
 <?php
 require_once 'RickAndMortyService.php';
-
 $service = new RickAndMortyService();
-$data = $service->getCharacters(1);
+
+// Capturamos la página de la URL: index.php?page=2
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+// Obtenemos los datos de esa página específica
+$data = $service->getCharacters($currentPage);
+
+// Calculamos páginas sig/prev (la API nos da info['pages'] para el límite)
+$totalPages = $data['info']['pages'] ?? 1;
+$nextPage = $currentPage < $totalPages ? $currentPage + 1 : null;
+$prevPage = $currentPage > 1 ? $currentPage - 1 : null;
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +56,21 @@ $data = $service->getCharacters(1);
             <?php endforeach; ?>
         <?php else: ?>
             <p>No hay datos disponibles.</p>
+        <?php endif; ?>
+    </div>
+    <div class="pagination">
+        <?php if ($prevPage): ?>
+            <a href="?page=<?= $prevPage ?>" class="btn">« Anterior</a>
+        <?php else: ?>
+            <span class="btn disabled">« Anterior</span>
+        <?php endif; ?>
+
+        <span class="page-info">Página <?= $currentPage ?> de <?= $totalPages ?></span>
+
+        <?php if ($nextPage): ?>
+            <a href="?page=<?= $nextPage ?>" class="btn">Siguiente »</a>
+        <?php else: ?>
+            <span class="btn disabled">Siguiente »</span>
         <?php endif; ?>
     </div>
 

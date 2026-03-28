@@ -98,6 +98,39 @@ h1 {
     font-size: 1rem;
     color: var(--text-white);
 }
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    gap: 20px;
+}
+
+.btn {
+    background-color: var(--primary-green);
+    color: var(--bg-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover:not(.disabled) {
+    background-color: #b2e061;
+    transform: translateY(-2px);
+}
+
+.btn.disabled {
+    background-color: #555;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.page-info {
+    font-size: 1.1rem;
+    color: var(--text-white);
+}
 
 /* Responsivo para móviles */
 @media (max-width: 500px) {
